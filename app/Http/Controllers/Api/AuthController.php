@@ -25,8 +25,6 @@ class AuthController extends Controller
         if(Hash::check($request->password,$user->password)){
 
            $http = new Client;
-
-
           $response = $http->post('http://passport.test/oauth/token', [
               'form_params' => [
                   'grant_type' => 'password',
@@ -37,19 +35,8 @@ class AuthController extends Controller
                   'scope'    => '',
               ],
           ]);
-
-
-
       return json_decode((string) $response->getBody(), true);
-
-
-
         }
-
-
-
-
-
     }
 
 
@@ -69,28 +56,17 @@ class AuthController extends Controller
         $http = new Client;
 
 
-    $response = $http->post('http://passport.test/oauth/token', [
-        'form_params' => [
-            'grant_type' => 'password',
-            'client_id'  => '2',
-            'client_secret' => 'MruHGSDOScFO5monT016WsoCVH3ufxNHWnb0lkla',
-            'username' => $request->email,
-            'password' => $request->password,
-            'scope'    => '',
-        ],
+        $response = $http->post('http://passport.test/oauth/token', [
+            'form_params' => [
+                'grant_type' => 'password',
+                'client_id'  => '2',
+                'client_secret' => 'MruHGSDOScFO5monT016WsoCVH3ufxNHWnb0lkla',
+                'username' => $request->email,
+                'password' => $request->password,
+                'scope'    => '',
+            ],
     ]);
 
-
-
-     //return json_decode((string) $response->getBody(), true);
-
     return json_decode((string) $response->getBody(), true);
-
-
-
-
-    }
-
-
-
+  }
 }

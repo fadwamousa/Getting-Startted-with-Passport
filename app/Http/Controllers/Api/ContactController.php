@@ -37,7 +37,7 @@ class ContactController extends Controller
 
     public function show($id)
     {
-      $contacts = Contact::findOrFail($id);
+      $contacts = request()->user()->contacts()->findOrFail($id);
       return new ContactResource($contacts);
     }
 
