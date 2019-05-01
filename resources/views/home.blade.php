@@ -14,10 +14,26 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                   <div id="app">
+
+                     <passport-clients></passport-clients>
+                    <passport-authorized-clients></passport-authorized-clients>
+                    <passport-personal-access-tokens></passport-personal-access-tokens>
+
+                   </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+@push('script')
+<script type="text/javascript">
+
+axios.get('/oauth/clients')
+    .then(response => {
+        console.log(response.data);
+    });
+
+</script>
+@endpush
